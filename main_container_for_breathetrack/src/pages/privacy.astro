@@ -1,0 +1,147 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Privacy Policy" description="BreatheTrack Privacy Policy">
+  <Header slot="header" />
+  
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">Privacy Policy</h1>
+    </div>
+    
+    <div class="privacy-content card">
+      <section class="privacy-section">
+        <h2>Introduction</h2>
+        <p>
+          At BreatheTrack, we prioritize your privacy. This Privacy Policy explains how we handle your information 
+          when you use our application. We design our app with privacy in mind - your data stays on your device.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Information Collection</h2>
+        <p>
+          <strong>Local Storage Only:</strong> BreatheTrack stores all user information locally on your device using 
+          your browser's local storage functionality. This includes:
+        </p>
+        <ul>
+          <li>BOLT test results and history</li>
+          <li>User profile information (if provided)</li>
+          <li>App preferences and settings</li>
+        </ul>
+        <p>
+          <strong>No External Data Collection:</strong> We do not collect, transmit, or store any personal information 
+          on external servers. All your data remains on your device.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Use of Information</h2>
+        <p>
+          The information stored locally on your device is used solely to provide the functionality of the App, including:
+        </p>
+        <ul>
+          <li>Displaying your BOLT test history and progress</li>
+          <li>Personalizing your experience based on your settings</li>
+          <li>Providing relevant information based on your test results</li>
+        </ul>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Data Security</h2>
+        <p>
+          Since all data is stored locally on your device, data security depends on your device's security measures. 
+          We recommend maintaining appropriate security measures on your device, such as using screen locks and keeping 
+          your operating system and browsers updated.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Third-Party Access</h2>
+        <p>
+          BreatheTrack does not share your information with any third parties. No third-party analytics, tracking, 
+          or advertising services are implemented in the App.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Data Retention and Deletion</h2>
+        <p>
+          Since your data is stored locally, you have complete control over its retention and deletion. You can clear 
+          your BOLT test history at any time using the "Clear History" function in the App. You can also clear all App 
+          data by clearing your browser's local storage or uninstalling the App.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Children's Privacy</h2>
+        <p>
+          BreatheTrack is not intended for use by children under the age of 13. We do not knowingly collect personal 
+          information from children under 13. If you believe a child under 13 may have provided personal information, 
+          please contact us so we can take appropriate steps.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Changes to This Privacy Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new 
+          Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+        </p>
+      </section>
+      
+      <section class="privacy-section">
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us at privacy@breathetrack.example.com.
+        </p>
+      </section>
+    </div>
+  </div>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .privacy-content {
+    max-width: 800px;
+  }
+  
+  .privacy-section {
+    margin-bottom: 2rem;
+  }
+  
+  .privacy-section:last-child {
+    margin-bottom: 0;
+  }
+  
+  .privacy-section h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  
+  .privacy-section p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .privacy-section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+  
+  .privacy-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .privacy-section strong {
+    color: #1f2937;
+  }
+</style>
