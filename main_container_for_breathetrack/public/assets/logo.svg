@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40">
+  <style>
+    .text { font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; }
+    .blue { fill: #3b82f6; }
+    .dark { fill: #1f2937; }
+    .wave { fill: none; stroke: #3b82f6; stroke-width: 2; stroke-linecap: round; }
+  </style>
+  <path class="blue" d="M12,8 C18,8 18,32 24,32 C30,32 30,8 36,8" class="wave" />
+  <path class="blue" d="M6,16 C12,16 12,24 18,24 C24,24 24,16 30,16" class="wave" />
+  <text x="45" y="25" class="text blue">Breathe</text>
+  <text x="105" y="25" class="text dark">Track</text>
+</svg>
