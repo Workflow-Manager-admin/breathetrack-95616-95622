@@ -1,0 +1,386 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Profile">
+  <Header slot="header" />
+  
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">Your Profile</h1>
+      <p class="page-subtitle">Manage your settings and information</p>
+    </div>
+    
+    <div class="profile-card card">
+      <h2>Personal Information</h2>
+      
+      <form id="profile-form" class="profile-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" placeholder="Enter your age">
+        </div>
+        
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="non-binary">Non-binary</option>
+            <option value="other">Other</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Do you have any respiratory conditions?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="conditions" value="asthma"> Asthma
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="conditions" value="copd"> COPD
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="conditions" value="sleep-apnea"> Sleep Apnea
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="conditions" value="other"> Other
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Profile</button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="settings-card card">
+      <h2>App Settings</h2>
+      
+      <div class="settings-list">
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Dark Mode</h3>
+            <p>Enable dark theme for the app</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Notifications</h3>
+            <p>Receive reminders to take your BOLT test</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="notification-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Data Storage</h3>
+            <p>Store your BOLT scores locally</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="storage-toggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<script>
+  // Wait for DOM to be loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    const profileForm = document.getElementById('profile-form');
+    const nameInput = document.getElementById('name');
+    const ageInput = document.getElementById('age');
+    const genderSelect = document.getElementById('gender');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const notificationToggle = document.getElementById('notification-toggle');
+    const storageToggle = document.getElementById('storage-toggle');
+    
+    // Load saved profile data if it exists
+    loadProfile();
+    
+    // Add event listeners
+    if (profileForm) {
+      profileForm.addEventListener('submit', saveProfile);
+    }
+    
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('change', toggleDarkMode);
+      // Initialize dark mode state
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      darkModeToggle.checked = isDarkMode;
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+      }
+    }
+    
+    if (notificationToggle) {
+      notificationToggle.addEventListener('change', toggleNotifications);
+      // Initialize notifications state
+      notificationToggle.checked = localStorage.getItem('notifications') === 'true';
+    }
+    
+    if (storageToggle) {
+      storageToggle.addEventListener('change', toggleStorage);
+      // Initialize storage state (default to true)
+      storageToggle.checked = localStorage.getItem('storage') !== 'false';
+    }
+    
+    /**
+     * Save profile data to localStorage
+     */
+    function saveProfile(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: nameInput?.value || '',
+        age: ageInput?.value || '',
+        gender: genderSelect?.value || '',
+        conditions: Array.from(document.querySelectorAll('input[name="conditions"]:checked'))
+          .map(cb => cb.value)
+      };
+      
+      // Save to localStorage
+      try {
+        localStorage.setItem('userProfile', JSON.stringify(formData));
+        alert('Profile saved successfully!');
+      } catch (error) {
+        console.error('Failed to save profile', error);
+        alert('Failed to save profile. Please try again.');
+      }
+    }
+    
+    /**
+     * Load profile data from localStorage
+     */
+    function loadProfile() {
+      try {
+        const savedProfile = localStorage.getItem('userProfile');
+        if (savedProfile) {
+          const profileData = JSON.parse(savedProfile);
+          
+          // Set form values
+          if (nameInput) nameInput.value = profileData.name || '';
+          if (ageInput) ageInput.value = profileData.age || '';
+          if (genderSelect) genderSelect.value = profileData.gender || '';
+          
+          // Set checkboxes
+          if (profileData.conditions) {
+            profileData.conditions.forEach(condition => {
+              const checkbox = document.querySelector(`input[name="conditions"][value="${condition}"]`);
+              if (checkbox) checkbox.checked = true;
+            });
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load profile', error);
+      }
+    }
+    
+    /**
+     * Toggle dark mode setting
+     */
+    function toggleDarkMode() {
+      const isDarkMode = darkModeToggle.checked;
+      localStorage.setItem('darkMode', isDarkMode);
+      
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+    
+    /**
+     * Toggle notifications setting
+     */
+    function toggleNotifications() {
+      localStorage.setItem('notifications', notificationToggle.checked);
+    }
+    
+    /**
+     * Toggle storage setting
+     */
+    function toggleStorage() {
+      localStorage.setItem('storage', storageToggle.checked);
+      
+      if (!storageToggle.checked) {
+        if (confirm('Clear all currently stored data?')) {
+          localStorage.removeItem('boltScoreHistory');
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+  .profile-card,
+  .settings-card {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-card h2,
+  .settings-card h2 {
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    color: #4b5563;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #1f2937;
+    background-color: #fff;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b5563;
+    cursor: pointer;
+  }
+  
+  .form-actions {
+    margin-top: 1rem;
+  }
+  
+  .settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .setting-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .setting-info h3 {
+    margin: 0 0 0.25rem;
+    color: #374151;
+    font-size: 1.1rem;
+  }
+  
+  .setting-info p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  /* Toggle switch styles */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .toggle-slider {
+    background-color: #3b82f6;
+  }
+  
+  input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #3b82f6;
+  }
+  
+  input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+  }
+</style>
