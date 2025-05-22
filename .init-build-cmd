@@ -1,0 +1,4 @@
+{
+    "command": "npm install && npm run build",
+    "working_directory": "/home/kavia/workspace/code-generation/breathetrack-95616-95622/main_container_for_breathetrack"
+}
