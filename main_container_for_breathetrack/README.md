@@ -1,47 +1,86 @@
-# Astro Starter Kit: Minimal
+# BreatheTrack - BOLT Score Tracker
 
-```sh
-npm create astro@latest -- --template minimal
+BreatheTrack is a mobile web application built with Astro that helps users measure and track their breathing efficiency using the Body Oxygen Level Test (BOLT) score.
+
+## What is a BOLT Score?
+
+The Body Oxygen Level Test (BOLT) score is a simple assessment that measures breathing efficiency and carbon dioxide tolerance. It's performed by timing how long you can comfortably hold your breath after a normal exhalation, stopping at the first signs of discomfort.
+
+A higher BOLT score typically indicates better breathing patterns and more efficient oxygen delivery to tissues.
+
+## Features
+
+- BOLT test timer with clear instructions
+- Score tracking and history visualization
+- Personalized profile settings
+- Dark mode support
+- Mobile-optimized design
+- Local storage for saving test history
+
+## Project Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
+│   ├── assets/
+│   │   └── logo.svg
+│   ├── scripts/
+│   │   ├── boltTest.js
+│   │   └── darkMode.js
+│   └── styles/
+│       └── global.css
 ├── src/
+│   ├── components/
+│   │   ├── BoltHistory.astro
+│   │   ├── BoltInstructions.astro
+│   │   ├── BoltTimer.astro
+│   │   ├── Footer.astro
+│   │   └── Header.astro
+│   ├── layouts/
+│   │   └── MainLayout.astro
 │   └── pages/
-│       └── index.astro
+│       ├── index.astro
+│       ├── history.astro
+│       └── profile.astro
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. Install dependencies:
+```bash
+npm install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+2. Start development server:
+```bash
+npm run dev
+```
 
-## 🧞 Commands
+3. Build for production:
+```bash
+npm run build
+```
 
-All commands are run from the root of the project, from a terminal:
+4. Preview production build:
+```bash
+npm run preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Technology Stack
 
-## 👀 Want to learn more?
+- [Astro](https://astro.build/) - The web framework for content-focused websites
+- Vanilla JavaScript for interactivity
+- CSS for styling (no external UI libraries)
+- Local Storage API for data persistence
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Future Enhancements
+
+- Add data visualization charts for BOLT score trends
+- Implement reminders and notifications
+- Add breathing exercise guides
+- Sync data across devices with user accounts
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
