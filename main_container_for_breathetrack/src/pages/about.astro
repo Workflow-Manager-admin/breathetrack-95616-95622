@@ -1,0 +1,245 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="About" description="Learn about the Body Oxygen Level Test (BOLT) and how it can help improve your breathing efficiency">
+  <Header slot="header" />
+  
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">About BreatheTrack</h1>
+      <p class="page-subtitle">Understand and improve your breathing efficiency</p>
+    </div>
+    
+    <div class="about-content card">
+      <section class="about-section">
+        <h2>What is the BOLT Score?</h2>
+        <p>
+          The Body Oxygen Level Test (BOLT) score is a simple self-assessment tool developed by Patrick McKeown, 
+          author of "The Oxygen Advantage." It measures your body's tolerance to reduced oxygen and increased carbon dioxide levels, 
+          which is indicative of your breathing efficiency.
+        </p>
+        <p>
+          Unlike maximum breath-hold tests, the BOLT test measures the time until your <strong>first</strong> urge to breathe, 
+          not how long you can hold your breath in total. This makes it a much safer and more practical tool for regular use.
+        </p>
+      </section>
+      
+      <section class="about-section">
+        <h2>Why Track Your BOLT Score?</h2>
+        <p>Regular monitoring of your BOLT score can help you:</p>
+        <ul>
+          <li>Track improvements in breathing patterns</li>
+          <li>Gauge the effectiveness of breathing exercises</li>
+          <li>Monitor respiratory health</li>
+          <li>Understand your body's CO₂ tolerance</li>
+          <li>Set goals for breathing improvement</li>
+        </ul>
+      </section>
+      
+      <section class="about-section">
+        <h2>Understanding Your Score</h2>
+        <div class="score-table">
+          <div class="score-row header">
+            <div>BOLT Score</div>
+            <div>Classification</div>
+            <div>Interpretation</div>
+          </div>
+          <div class="score-row">
+            <div><span class="score poor">Below 10</span></div>
+            <div>Poor</div>
+            <div>May experience frequent breathing difficulties, poor sleep quality, and reduced exercise tolerance</div>
+          </div>
+          <div class="score-row">
+            <div><span class="score fair">10-20</span></div>
+            <div>Fair</div>
+            <div>Common range for many people; may experience occasional symptoms during exercise or stress</div>
+          </div>
+          <div class="score-row">
+            <div><span class="score good">20-30</span></div>
+            <div>Good</div>
+            <div>Indicates improved breathing patterns; fewer breathing-related symptoms</div>
+          </div>
+          <div class="score-row">
+            <div><span class="score very-good">30-40</span></div>
+            <div>Very Good</div>
+            <div>Excellent breathing efficiency; good exercise tolerance</div>
+          </div>
+          <div class="score-row">
+            <div><span class="score excellent">40+</span></div>
+            <div>Excellent</div>
+            <div>Optimal breathing efficiency; typically seen in well-trained athletes</div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="about-section">
+        <h2>Improving Your BOLT Score</h2>
+        <p>
+          With consistent practice of proper breathing techniques, most people can improve their BOLT score over time. 
+          Some effective methods include:
+        </p>
+        <ul>
+          <li><strong>Nasal breathing:</strong> Practice breathing through your nose both day and night</li>
+          <li><strong>Reduced breathing:</strong> Practice gentle breath reduction exercises</li>
+          <li><strong>Breath holds:</strong> Incorporate gentle breath holds into daily activities</li>
+          <li><strong>Physical exercise:</strong> Regular exercise with proper breathing technique</li>
+        </ul>
+        <p class="disclaimer">
+          <strong>Note:</strong> Always consult with a healthcare provider before starting any new breathing practice, 
+          especially if you have underlying health conditions.
+        </p>
+      </section>
+      
+      <section class="about-section">
+        <h2>About BreatheTrack</h2>
+        <p>
+          BreatheTrack was developed to help individuals track their breathing efficiency using the BOLT method. 
+          This application allows you to:
+        </p>
+        <ul>
+          <li>Take the BOLT test with a precisely timed interface</li>
+          <li>Record and save your results</li>
+          <li>Track your progress over time</li>
+          <li>Understand your breathing patterns</li>
+        </ul>
+        <p>
+          All your data is stored locally on your device. We believe in privacy-first design and do not collect 
+          or transmit any personal information.
+        </p>
+      </section>
+    </div>
+  </div>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .about-content {
+    max-width: 800px;
+  }
+  
+  .about-section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .about-section:last-child {
+    margin-bottom: 0;
+  }
+  
+  .about-section h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .about-section p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .about-section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+  
+  .about-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .score-table {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  
+  .score-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .score-row.header {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .score-row:last-child {
+    border-bottom: none;
+  }
+  
+  .score-row > div {
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .score-row > div:not(:last-child) {
+    border-right: 1px solid #e5e7eb;
+  }
+  
+  .score {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+  }
+  
+  .score.poor {
+    background-color: #ef4444;
+  }
+  
+  .score.fair {
+    background-color: #f59e0b;
+  }
+  
+  .score.good {
+    background-color: #10b981;
+  }
+  
+  .score.very-good {
+    background-color: #3b82f6;
+  }
+  
+  .score.excellent {
+    background-color: #6366f1;
+  }
+  
+  .disclaimer {
+    font-size: 0.875rem;
+    padding: 1rem;
+    background-color: #fff7ed;
+    border-left: 4px solid #f97316;
+    border-radius: 4px;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 640px) {
+    .score-table {
+      font-size: 0.875rem;
+    }
+    
+    .score-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .score-row > div:nth-child(3) {
+      grid-column: 1 / 3;
+      border-right: none;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    .score-row.header > div:nth-child(3) {
+      display: none;
+    }
+  }
+</style>
