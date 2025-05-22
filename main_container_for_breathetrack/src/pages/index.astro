@@ -1,16 +1,45 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BoltTimer from '../components/BoltTimer.astro';
+import BoltInstructions from '../components/BoltInstructions.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="BOLT Test">
+  <Header slot="header" />
+  
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">Body Oxygen Level Test</h1>
+      <p class="page-subtitle">Measure your breathing efficiency and CO₂ tolerance</p>
+    </div>
+    
+    <div class="test-container">
+      <BoltTimer />
+      
+      <BoltInstructions />
+    </div>
+  </div>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .test-container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>
