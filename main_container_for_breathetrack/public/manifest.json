@@ -1,0 +1,18 @@
+{
+  "name": "BreatheTrack - BOLT Score Tracker",
+  "short_name": "BreatheTrack",
+  "description": "Track and improve your breathing efficiency with the BOLT score test",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any"
+    }
+  ],
+  "orientation": "portrait",
+  "categories": ["health", "fitness", "lifestyle"],
+  "lang": "en-US"
+}
