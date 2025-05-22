@@ -1,0 +1,110 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BoltHistory from '../components/BoltHistory.astro';
+---
+
+<MainLayout title="History">
+  <Header slot="header" />
+  
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">Your BOLT Score History</h1>
+      <p class="page-subtitle">Track your breathing progress over time</p>
+    </div>
+    
+    <BoltHistory />
+    
+    <div class="history-info card">
+      <h2>Understanding Your Progress</h2>
+      <p>A higher BOLT score indicates better breathing efficiency and CO₂ tolerance. Most people start with a score between 10-20 seconds. Regular breathing practice can help improve your score over time.</p>
+      
+      <div class="score-legend">
+        <h3>BOLT Score Guide:</h3>
+        <ul>
+          <li><span class="score-badge poor">Below 10</span> Poor breathing efficiency</li>
+          <li><span class="score-badge fair">10-20</span> Fair breathing efficiency</li>
+          <li><span class="score-badge good">20-30</span> Good breathing efficiency</li>
+          <li><span class="score-badge very-good">30-40</span> Very good breathing efficiency</li>
+          <li><span class="score-badge excellent">40+</span> Excellent breathing efficiency</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .history-info {
+    margin-top: 2rem;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .history-info h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .history-info p {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .score-legend {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .score-legend h3 {
+    margin-bottom: 1rem;
+    color: #374151;
+    font-size: 1.1rem;
+  }
+  
+  .score-legend ul {
+    list-style: none;
+  }
+  
+  .score-legend li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    color: #4b5563;
+  }
+  
+  .score-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+  }
+  
+  .score-badge.poor {
+    background-color: #ef4444;
+  }
+  
+  .score-badge.fair {
+    background-color: #f59e0b;
+  }
+  
+  .score-badge.good {
+    background-color: #10b981;
+  }
+  
+  .score-badge.very-good {
+    background-color: #3b82f6;
+  }
+  
+  .score-badge.excellent {
+    background-color: #6366f1;
+  }
+</style>
