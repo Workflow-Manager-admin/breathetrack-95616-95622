@@ -1,0 +1,5 @@
+{
+  "task_description": "{'component_name': 'Main Container for BreatheTrack', 'description': "Primary container for BreatheTrack implementation: A mobile application designed to measure and track an individual's Body Oxygen Level Test (BOLT) score, which assesses breathing efficiency and CO₂ tolerance through a simple breath-holding assessment.", 'framework': 'astro', 'platform': 'web'}",
+  "tasks": {},
+  "next_task_id": 1
+}
